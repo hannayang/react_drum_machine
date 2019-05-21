@@ -4,3 +4,97 @@
   padding-top: 110px; 
 }
 
+#drum-container {
+  background-color: white; 
+  width: 48%; 
+  height: 350px; 
+  border: 3px solid black;
+  border-radius: 5px; 
+  display: flex; 
+  flex-direction: row-reverse; 
+  margin: 150px auto; 
+}
+
+#drum-control {
+  width: 40%; 
+  margin-top: 30px; 
+}
+
+#music-keys {
+  width: 60%; 
+  margin: 50px; 
+}
+
+.music-buttons {
+  float: left;
+  width: 73px; 
+  height: 73px; 
+  margin: 8px; 
+  border: 2px solid black; 
+  border-radius: 5px; 
+  font-size: 20px; 
+  cursor: pointer; 
+}
+
+.music-buttons:hover {
+  background-color: orange; 
+}
+
+.green-button {
+  background-color: green; 
+}
+
+.red-button {
+  background-color: red; 
+}
+
+.display-box {
+  margin-top: 30px; 
+  border-radius: 1px; 
+  width: 150px; 
+  height: 25px; 
+  font-size: 17px;
+  font-weight: bold;  
+  color: rgb(46, 46, 221); 
+}
+
+.toggleButton {
+  width: 50px; 
+  height: 25px; 
+  border: 2px solid black; 
+  border-radius: 3px; 
+  cursor: pointer; 
+}
+
+.item {
+  display: inline-block;
+  background-color:gray; 
+}
+
+.show-left {
+  text-align: left; 
+}
+
+.show-right {
+  text-align: right; 
+}
+
+.item-left {
+  width: 25px; 
+  height: 25px; 
+}
+
+.item-right {
+  width: 25px; 
+  height: 25px; 
+}
+
+.show-left .item-right {
+  display: none; 
+}
+
+.show-right .item-left {
+  display: none; 
+}
+
+

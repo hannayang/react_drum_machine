@@ -1,81 +1,228 @@
 import React, { Component } from 'react';
 import './App.css';
-import Quote from '../Components/Quote/Quote'; 
-import Buttons from '../Components/Buttons/Buttons'; 
 
-const quoteLibrary = [
-  {text: "You know you're in love when you can't fall asleep because reality is finally better than your dreams.", author: 'Dr. Suess', color: '#16a085'}, 
-  {text: 'Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do.', author: 'Mark Twain', color: '#27ae60'}, 
-  {text: 'The first step toward success is taken when you refuse to be a captive of the environment in which you first find yourself.', author: 'Mark Caine', color: '#2c3e50'}, 
-  {text: 'Love yourself first and everything else falls into line. You really have to love yourself to get anything done in this world.', author: 'Lucille Ball', color: '#f39c12'}, 
-  {text: 'Challenges are what make life interesting and overcoming them is what makes life meaningful.', author: 'Joshua J. Marine', color: '#e74c3c'},  
-  {text: 'Remember that the happiest people are not those getting more, but those giving more.', author: 'H. Jackson Brown, Jr.', color: '#9b59b6'}, 
-  {text: 'Live in the sunshine, swim the sea, drink the wild air.', author: 'Ralph Waldo Emerson', color: '#fb6964'},  
-  {text: 'We are what we repeatedly do; excellence, then, is not an act but a habit.', author: 'Aristotle', color: '#388894'}, 
-  {text: 'A man is a success if he gets up in the morning and gets to bed at night, and in between he does what he wants to do.', author: 'Bob Dylan', color: '#472e32'}, 
-  {text: 'The big lesson in life, baby, is never be scared of anyone or anything.', author: 'Frank Sinatra', color: '#94386C'}, 
-]; 
+const bankOne = [{
+  keyCode: 81, 
+  keyTrigger: 'Q', 
+  id: 'Heater-1', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'
+}, {
+  keyCode: 87, 
+  keyTrigger: 'W',
+  id: 'Heater-2', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3' 
+}, {
+  keyCode: 69, 
+  keyTrigger: 'E',
+  id: 'Heater-3', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3' 
+}, {
+  keyCode: 65, 
+  keyTrigger: 'A',
+  id: 'Heater-4', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3' 
+}, {
+  keyCode: 83, 
+  keyTrigger: 'S',
+  id: 'Clap', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3' 
+}, {
+  keyCode: 68, 
+  keyTrigger: 'D',
+  id: 'Open-HH', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3' 
+}, {
+  keyCode: 90, 
+  keyTrigger: 'Z',
+  id: "Kick-n'-Hat", 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3' 
+}, {
+  keyCode: 88, 
+  keyTrigger: 'X',
+  id: 'Kick', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3' 
+}, {
+  keyCode: 67, 
+  keyTrigger: 'C',
+  id: 'Closed-HH', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3' 
+}]; 
 
-const nextIndex = () => {
-  return Math.floor(Math.random() * quoteLibrary.length);
-};
+const bankTwo = [{
+  keyCode: 81, 
+  keyTrigger: 'Q', 
+  id: 'Chord-1', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3'
+}, {
+  keyCode: 87, 
+  keyTrigger: 'W',
+  id: 'Chord-2', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Chord_2.mp3' 
+}, {
+  keyCode: 69, 
+  keyTrigger: 'E',
+  id: 'Chord-3', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Chord_3.mp3' 
+}, {
+  keyCode: 65, 
+  keyTrigger: 'A',
+  id: 'Shaker', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3' 
+}, {
+  keyCode: 83, 
+  keyTrigger: 'S',
+  id: 'Dry-Ohh', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3' 
+}, {
+  keyCode: 68, 
+  keyTrigger: 'D',
+  id: 'Open-HH2', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3' 
+}, {
+  keyCode: 90, 
+  keyTrigger: 'Z',
+  id: "Punchy-Kick", 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3' 
+}, {
+  keyCode: 88, 
+  keyTrigger: 'X',
+  id: 'Side-Stick', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3' 
+}, {
+  keyCode: 67, 
+  keyTrigger: 'C',
+  id: 'Snare', 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3' 
+}];
 
-const constructTwitterUrl = {
-  preface: 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="', 
-  connection: '"', 
-  ending: '' }; 
-
-const constructTumblrUrl = {
-  preface: 'https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes,freecodecamp&caption=', 
-  connection: '&content=', 
-  ending: '&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button'
-};
 
 class App extends Component {
-  state = {
-    randomIndex: nextIndex(),
-  }; 
+  constructor(props) {
+    super(props); 
+      this.state = {
+        power: true,  
+        bank: 'bankOne',
+        volume: 0.3,
+        display: '',
+      };
 
-  clickHandler = ( ) => {
-    this.setState ({
-      randomIndex: nextIndex(), 
+      this.powerControl = this.powerControl.bind(this); 
+      this.selectBank = this.selectBank.bind(this); 
+      this.adjustVolume = this.adjustVolume.bind(this); 
+      this.clearDisplay = this.clearDisplay.bind(this); 
+      this.playSound = this.playSound.bind(this); 
+      this.musicButtonClick = this.musicButtonClick.bind(this); 
+    }
+  
+  powerControl() {
+    this.setState({
+      power: !this.state.power, 
+      display: '',
     }); 
-  };
+  }
 
-  render () {
-    const quoteDisplay = quoteLibrary[this.state.randomIndex]; 
+  selectBank() {
+    if(this.state.power === true) { 
+      if(this.state.bank === 'bankOne') { 
+        this.setState({
+          bank: 'bankTwo', 
+          display: 'Smooth Piano Kit', 
+        })
+      } else {
+        this.setState({
+          bank: 'bankOne', 
+          display: 'Heater Kit'
+        }); 
+      } 
+    } 
+  }
 
-    const fontColorStyle = {
-      color: quoteDisplay.color
-    }; 
+  adjustVolume(event) {
+    if(this.state.power === true) {
+      this.setState({
+        volume: event.target.value, 
+        display: 'Volume: ' + Math.round(event.target.value * 100), 
+      }); 
+      setTimeout(()=> this.clearDisplay(), 1000)
+    }
+  }
 
-    const backgroundStyle = {
-      backgroundColor: quoteDisplay.color
-    }; 
+  clearDisplay(){
+    this.setState({
+      display: ''
+    }); 
+  }
 
-    const twitterFullUrl = () => {
-      return constructTwitterUrl.preface + quoteDisplay.text + constructTwitterUrl.connection + quoteDisplay.author
-    }; 
+  playSound(button, volume) {
+    const sound = document.getElementById(button.id); 
+    sound.volume = volume; 
+    sound.currentTime = 0; 
+    sound.play();
+  }
 
-    const tublrFullUrl = () => {
-      return constructTumblrUrl.preface + quoteDisplay.author + constructTumblrUrl.connection + quoteDisplay.text + constructTumblrUrl.ending
-    }; 
+  musicButtonClick(button, volume) {
+    this.playSound(button, volume); 
+    this.setState({
+      display: button.id
+    })
+  }
+
+  getExtendedState(state) { 
+    return {
+      buttons: state.bank === 'bankOne' ? bankOne : (state.bank === 'bankTwo' ? bankTwo : null),
+    };
+  }
+
+  renderButtons(buttons) {
+    const musicButtonClick = this.musicButtonClick; 
+    const volume = this.state.volume; 
+    return buttons.map((button) => {
+      return (
+        <div>
+          <button className='music-buttons' onClick={()=>musicButtonClick(button, volume)}>{button.keyTrigger}</button>
+          <audio id={button.id} scr={button.url}> </audio>
+        </div> 
+      )
+    })
+  }
+
+  render() {
+    const extendedState = this.getExtendedState(this.state);
+    const powerButtonClasses = this.state.power ? 'toggleButton show-left green-button' : 'toggleButton show-right red-button'; 
+    const bankButtonClasses = this.state.bank === 'bankOne' ? 'toggleButton show-left' : 'toggleButton show-right'; 
 
     return (
-      <div className="App" style = {backgroundStyle}>
-        <div style = {fontColorStyle}> 
-          <Quote 
-            text = {quoteDisplay.text}
-            author = {quoteDisplay.author}/>
-          <Buttons
-            twitterFullUrl = {twitterFullUrl()}
-            tublrFullUrl = {tublrFullUrl()}
-            clicked = {this.clickHandler}
-            buttonStyle = {backgroundStyle} />
+      <div id='drum-container'>
+        <div id='drum-control'>
+          <div>
+            <h3> Power </h3>
+            <div className = {powerButtonClasses} onClick = {this.powerControl}> 
+              <div className='item item-left'> </div>
+              <div className='item item-right'> </div>
+            </div>
+          </div>
+          <p className='display-box'> {this.state.display} </p>
+          <h3> Volume </h3> 
+          <input 
+            type="range" 
+            min="0" 
+            max="1" 
+            step="0.01" 
+            value={this.state.volume} 
+            onChange={this.adjustVolume} 
+            />
+          <h3> Bank </h3> 
+          <div className={bankButtonClasses} onClick = {this.selectBank}>
+            <div className='item item-left'> </div>
+            <div className='item item-right'> </div> 
+          </div>
+        </div>
+        <div id = 'music-keys'>
+          {this.renderButtons(extendedState.buttons)}
         </div>
       </div>
-    );
-  }; 
+    )
+  }
 }; 
 
 export default App;
