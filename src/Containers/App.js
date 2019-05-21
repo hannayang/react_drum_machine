@@ -161,10 +161,12 @@ class App extends Component {
   }
 
   musicButtonClick(button, volume) {
-    this.playSound(button, volume); 
-    this.setState({
-      display: button.id
-    })
+    if(this.state.power === true) {
+      this.playSound(button, volume); 
+      this.setState({
+        display: button.id
+      })
+    }
   }
 
   getExtendedState(state) { 
@@ -176,11 +178,11 @@ class App extends Component {
   renderButtons(buttons) {
     const musicButtonClick = this.musicButtonClick; 
     const volume = this.state.volume; 
-    return buttons.map((button) => {
+    return buttons.map((button,i) => {
       return (
-        <div>
+        <div> 
           <button className='music-buttons' onClick={()=>musicButtonClick(button, volume)}>{button.keyTrigger}</button>
-          <audio id={button.id} scr={button.url}> </audio>
+          <audio id={button.id} src={button.url}> </audio>
         </div> 
       )
     })
@@ -192,34 +194,39 @@ class App extends Component {
     const bankButtonClasses = this.state.bank === 'bankOne' ? 'toggleButton show-left' : 'toggleButton show-right'; 
 
     return (
-      <div id='drum-container'>
-        <div id='drum-control'>
-          <div>
-            <h3> Power </h3>
-            <div className = {powerButtonClasses} onClick = {this.powerControl}> 
+      <div>
+        <div className='empty'></div>
+        <div id='drum-container'>
+          <div id='drum-control'>
+            <div>
+              <h3 id='power-title'> Power </h3>
+              <div className = {powerButtonClasses} onClick = {this.powerControl}> 
+                <div className='item item-left'> </div>
+                <div className='item item-right'> </div>
+              </div>
+            </div>
+            <div className='display-box'>
+              <p className='display-text' > {this.state.display} </p>
+            </div>
+            <input 
+              type="range" 
+              min="0" 
+              max="1" 
+              step="0.01" 
+              value={this.state.volume} 
+              onChange={this.adjustVolume} 
+              />
+            <h3 id='bank-title'> Bank </h3> 
+            <div className={bankButtonClasses} onClick = {this.selectBank}>
               <div className='item item-left'> </div>
-              <div className='item item-right'> </div>
+              <div className='item item-right'> </div> 
             </div>
           </div>
-          <p className='display-box'> {this.state.display} </p>
-          <h3> Volume </h3> 
-          <input 
-            type="range" 
-            min="0" 
-            max="1" 
-            step="0.01" 
-            value={this.state.volume} 
-            onChange={this.adjustVolume} 
-            />
-          <h3> Bank </h3> 
-          <div className={bankButtonClasses} onClick = {this.selectBank}>
-            <div className='item item-left'> </div>
-            <div className='item item-right'> </div> 
+          <div id = 'music-keys'>
+            {this.renderButtons(extendedState.buttons)}
           </div>
         </div>
-        <div id = 'music-keys'>
-          {this.renderButtons(extendedState.buttons)}
-        </div>
+        <div className='empty'></div>
       </div>
     )
   }

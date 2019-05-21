@@ -1,28 +1,40 @@
+
+
 .App {
   height: 100%; 
   text-align: center;
   padding-top: 110px; 
 }
 
+body {
+  background-color: #4B0082; 
+  font-family: 'Play', sans-serif;
+}
+
+.empty {
+  padding: 75px 0; 
+}
+
 #drum-container {
-  background-color: white; 
+  background-color: rgb(201, 181, 241); 
   width: 48%; 
   height: 350px; 
-  border: 3px solid black;
+  border: 5px solid orange;
   border-radius: 5px; 
   display: flex; 
   flex-direction: row-reverse; 
-  margin: 150px auto; 
+  margin: 0 auto; 
 }
 
 #drum-control {
   width: 40%; 
-  margin-top: 30px; 
+  margin-top: 50px; 
+  margin-right: 50px; 
 }
 
 #music-keys {
   width: 60%; 
-  margin: 50px; 
+  margin: 50px;  
 }
 
 .music-buttons {
@@ -30,8 +42,10 @@
   width: 73px; 
   height: 73px; 
   margin: 8px; 
-  border: 2px solid black; 
+  border: none;  
   border-radius: 5px; 
+  background-color: #4B0082; 
+  color: white;
   font-size: 20px; 
   cursor: pointer; 
 }
@@ -48,14 +62,36 @@
   background-color: red; 
 }
 
+h3 {
+  margin: 10px auto 5px auto; 
+}
+
+#power-title {
+  width: 56px;
+}
+
+#bank-title {
+  width: 45px;
+}
+
 .display-box {
-  margin-top: 30px; 
-  border-radius: 1px; 
-  width: 150px; 
-  height: 25px; 
+  margin: 24px auto 24px auto; 
+  background-color: #4B0082; 
+  border-radius: 5px; 
+  width: 180px; 
+}
+
+.display-text {
+  padding: 15px; 
   font-size: 17px;
   font-weight: bold;  
-  color: rgb(46, 46, 221); 
+  color: white; 
+  text-align: center; 
+  height: 20px; 
+}
+
+input {
+  width: 210px; 
 }
 
 .toggleButton {
@@ -63,6 +99,7 @@
   height: 25px; 
   border: 2px solid black; 
   border-radius: 3px; 
+  margin: 0 auto; 
   cursor: pointer; 
 }
 
