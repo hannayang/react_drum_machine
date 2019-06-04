@@ -1,5 +1,3 @@
-
-
 .App {
   height: 100%; 
   text-align: center;
@@ -17,7 +15,7 @@ body {
 
 #drum-container {
   background-color: rgb(201, 181, 241); 
-  width: 48%; 
+  width: 600px; 
   height: 350px; 
   border: 5px solid orange;
   border-radius: 5px; 
@@ -27,13 +25,13 @@ body {
 }
 
 #drum-control {
-  width: 40%; 
+  width: 30%; 
   margin-top: 50px; 
   margin-right: 50px; 
 }
 
 #music-keys {
-  width: 60%; 
+  width: 70%; 
   margin: 50px;  
 }
 
@@ -134,4 +132,86 @@ input {
   display: none; 
 }
 
+@media(max-width: 625px) {
+  .empty {
+    padding: 40px 0; 
+  }
 
+  #drum-container {
+    width: 80%; 
+    height: 300px; 
+  }
+
+  #music-keys {
+    margin: 50px 10px 40px 25px; 
+  }
+  
+  .music-buttons {
+    width: 60px; 
+    height: 60px; 
+    margin: 5px; 
+  }
+
+  h3 {
+    margin: 4px auto; 
+  }
+
+  #power-title {
+    font-size: 16px; 
+    width: 50px;
+  }
+  
+  #bank-title {
+    font-size: 16px; 
+    width: 40px;
+  }
+  
+  .display-box {
+    margin: 18px auto 18px auto; 
+    background-color: #4B0082; 
+    border-radius: 5px; 
+    width: 160px; 
+  }
+  
+  .display-text {
+    padding: 10px; 
+    font-size: 15px;
+    font-weight: bold;  
+    color: white; 
+    text-align: center; 
+    height: 18px; 
+  }
+
+  input {
+    width: 160px; 
+  }
+}
+
+@media(max-width: 530px) {
+  #music-keys {
+    width: 75%; 
+    margin: 45px 10px 40px 15px; 
+  }
+  
+  #drum-control {
+    width: 25%; 
+    margin-right: 30px; 
+  }
+
+  h3 {
+    margin: 3px auto; 
+  }
+  
+  .display-box {
+    width: 129px; 
+  }
+  
+  .display-text {
+    font-size: 13px;
+    height: 17px; 
+  }
+
+  input {
+    width: 129px; 
+  }
+}
