@@ -215,3 +215,44 @@ input {
     width: 129px; 
   }
 }
+
+@media(max-width: 416px) {
+  #drum-container {
+    width: 80%; 
+    height: 260px; 
+  }
+
+  .music-buttons {
+    width: 45px; 
+    height: 45px; 
+    margin: 5px; 
+  }
+
+  #music-keys {
+    margin: 40px 3px 10px 10px; 
+  }
+  
+  #drum-control {
+    margin-right: 20px; 
+    margin-top: 20px; 
+  }
+  
+  .display-box {
+    width: 90px; 
+  }
+  
+  .display-text {
+    font-size: 10px;
+    height: 17px; 
+  }
+
+  input {
+    width: 90px; 
+  }
+}
+
+@media(max-width: 321px) {
+  #drum-container {
+    width: 90%; 
+  }
+}
