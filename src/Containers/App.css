@@ -226,6 +226,8 @@ input {
     width: 45px; 
     height: 45px; 
     margin: 5px; 
+    padding: 0; 
+    font-size: 18px; 
   }
 
   #music-keys {
