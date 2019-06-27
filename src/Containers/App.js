@@ -40,7 +40,7 @@ const bankOne = [{
   keyCode: 88, 
   keyTrigger: 'X',
   id: 'Kick', 
-  url: 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3' 
+  url: 'https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3' 
 }, {
   keyCode: 67, 
   keyTrigger: 'C',
@@ -105,20 +105,33 @@ class App extends Component {
         volume: 0.3,
         display: '',
       };
-
+      this.clearDisplay = this.clearDisplay.bind(this); 
       this.powerControl = this.powerControl.bind(this); 
       this.selectBank = this.selectBank.bind(this); 
       this.adjustVolume = this.adjustVolume.bind(this); 
-      this.clearDisplay = this.clearDisplay.bind(this); 
       this.playSound = this.playSound.bind(this); 
       this.musicButtonClick = this.musicButtonClick.bind(this); 
     }
+
+  clearDisplay(){
+    this.setState({
+      display: ''
+    }); 
+  }
   
   powerControl() {
-    this.setState({
-      power: !this.state.power, 
-      display: '',
-    }); 
+    if(this.state.power === true) {
+      this.setState({
+        power: !this.state.power, 
+        display: 'POWER OFF'
+      })
+    } else {
+      this.setState({
+        power: !this.state.power, 
+        display: 'POWER ON'
+      })
+    }
+    setTimeout(() => this.clearDisplay(), 1000)
   }
 
   selectBank() {
@@ -134,6 +147,7 @@ class App extends Component {
           display: 'Heater Kit'
         }); 
       } 
+      setTimeout(() => this.clearDisplay(), 1000)
     } 
   }
 
@@ -145,12 +159,6 @@ class App extends Component {
       }); 
       setTimeout(()=> this.clearDisplay(), 1000)
     }
-  }
-
-  clearDisplay(){
-    this.setState({
-      display: ''
-    }); 
   }
 
   playSound(button, volume) {
@@ -178,7 +186,7 @@ class App extends Component {
   renderButtons(buttons) {
     const musicButtonClick = this.musicButtonClick; 
     const volume = this.state.volume; 
-    return buttons.map((button,i) => {
+    return buttons.map((button) => {
       return (
         <div> 
           <button className='music-buttons' onClick={()=>musicButtonClick(button, volume)}>{button.keyTrigger}</button>
@@ -190,8 +198,8 @@ class App extends Component {
 
   render() {
     const extendedState = this.getExtendedState(this.state);
-    const powerButtonClasses = this.state.power ? 'toggleButton show-left green-button' : 'toggleButton show-right red-button'; 
-    const bankButtonClasses = this.state.bank === 'bankOne' ? 'toggleButton show-left' : 'toggleButton show-right'; 
+    const powerButtonClasses = this.state.power ? 'toggle-button show-left on-button' : 'toggle-button show-right off-button'; 
+    const bankButtonClasses = this.state.bank === 'bankOne' ? 'toggle-button show-left' : 'toggle-button show-right'; 
 
     return (
       <div>
@@ -200,7 +208,7 @@ class App extends Component {
           <div id='drum-control'>
             <div>
               <h3 id='power-title'> Power </h3>
-              <div className = {powerButtonClasses} onClick = {this.powerControl}> 
+              <div className={powerButtonClasses} onClick={this.powerControl}> 
                 <div className='item item-left'> </div>
                 <div className='item item-right'> </div>
               </div>
@@ -208,7 +216,7 @@ class App extends Component {
             <div className='display-box'>
               <p className='display-text' > {this.state.display} </p>
             </div>
-            <input 
+            <input
               type="range" 
               min="0" 
               max="1" 
@@ -218,8 +226,8 @@ class App extends Component {
               />
             <h3 id='bank-title'> Bank </h3> 
             <div className={bankButtonClasses} onClick = {this.selectBank}>
-              <div className='item item-left'> </div>
-              <div className='item item-right'> </div> 
+              <div className='select-item item-left'> </div>
+              <div className='select-item item-right'> </div> 
             </div>
           </div>
           <div id = 'music-keys'>

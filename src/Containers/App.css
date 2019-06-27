@@ -1,3 +1,4 @@
+/*------------general and drum container-------------------*/
 .App {
   height: 100%; 
   text-align: center;
@@ -13,62 +14,78 @@ body {
   padding: 75px 0; 
 }
 
+h3 {
+  margin: 10px auto 5px auto; 
+}
+
 #drum-container {
   background-color: rgb(201, 181, 241); 
   width: 600px; 
   height: 350px; 
-  border-radius: 5px; 
+  border-radius: 15px; 
   display: flex; 
   flex-direction: row-reverse; 
   margin: 0 auto; 
 }
 
+/*--------------drum control--------------------*/
 #drum-control {
   width: 30%; 
   margin-top: 50px; 
   margin-right: 50px; 
 }
 
-#music-keys {
-  width: 70%; 
-  margin: 50px;  
+#power-title {
+  width: 56px;
+  color:  rgb(50, 1, 85);
 }
 
-.music-buttons {
-  float: left;
-  width: 73px; 
-  height: 73px; 
-  margin: 8px; 
-  border: none;  
-  border-radius: 5px; 
-  background-color: #4B0082; 
-  color: white;
-  font-size: 20px; 
+.toggle-button {
+  width: 50px; 
+  height: 25px; 
+  border: 2px solid #4B0082; 
+  border-radius: 3px; 
+  margin: 0 auto; 
   cursor: pointer; 
 }
 
-.music-buttons:hover {
+.on-button {
   background-color: orange; 
 }
 
-.green-button {
-  background-color: green; 
+.off-button {
+  background-color: rgb(182, 169, 206); 
 }
 
-.red-button {
-  background-color: red; 
+.item {
+  display: inline-block;
+  background-color:rgb(208, 192, 240); 
 }
 
-h3 {
-  margin: 10px auto 5px auto; 
+.item-left {
+  width: 25px; 
+  height: 25px; 
 }
 
-#power-title {
-  width: 56px;
+.item-right {
+  width: 25px; 
+  height: 25px; 
 }
 
-#bank-title {
-  width: 45px;
+.show-left {
+  text-align: left; 
+}
+
+.show-right {
+  text-align: right; 
+}
+
+.show-left .item-right {
+  display: none; 
+}
+
+.show-right .item-left {
+  display: none; 
 }
 
 .display-box {
@@ -91,46 +108,46 @@ input {
   width: 210px; 
 }
 
-.toggleButton {
-  width: 50px; 
-  height: 25px; 
-  border: 2px solid black; 
-  border-radius: 3px; 
-  margin: 0 auto; 
+#bank-title {
+  width: 45px;
+  color: rgb(50, 1, 85);
+}
+
+.select-item {
+  display: inline-block; 
+  background-color:#4B0082; 
+}
+
+/*--------------music buttons-----------------*/
+#music-keys {
+  width: 70%; 
+  margin: 50px;  
+}
+
+.music-buttons {
+  float: left;
+  width: 73px; 
+  height: 73px; 
+  margin: 8px; 
+  border: none;  
+  border-radius: 5px; 
+  background-color: #4B0082; 
+  color: white;
+  font-size: 20px; 
   cursor: pointer; 
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(.06,.67,.37,.99);
 }
 
-.item {
-  display: inline-block;
-  background-color:gray; 
+.music-buttons:hover {
+  transform: translateY(-.2rem);
 }
 
-.show-left {
-  text-align: left; 
+.music-buttons:focus {
+  background-color: orange; 
 }
 
-.show-right {
-  text-align: right; 
-}
-
-.item-left {
-  width: 25px; 
-  height: 25px; 
-}
-
-.item-right {
-  width: 25px; 
-  height: 25px; 
-}
-
-.show-left .item-right {
-  display: none; 
-}
-
-.show-right .item-left {
-  display: none; 
-}
-
+/*-----------------responsive design-------------------*/
 @media(max-width: 625px) {
   .empty {
     padding: 40px 0; 
@@ -256,4 +273,96 @@ input {
   #drum-container {
     width: 90%; 
   }
+}
+
+/*-------------- CUSTOM VOLUME RANGE INPUT -- Credit: https://github.com/darlanrod/input-range-scss/blob/master/_inputrange.scss ------*/
+[type=range] {
+  -webkit-appearance: none;
+  margin: 12.5px 0;
+  width: 100%;
+}
+[type=range]:focus {
+  outline: none;
+}
+[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  transition: all .2s ease;
+  box-shadow: 2px 2px 2px #4B0082;
+  background: #4B0082;
+  border: none;
+  border-radius: 5px; 
+}
+[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #4B0082;
+  border: 1px; 
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #4B0082;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+  transform: scale(1.0); 
+  transition: all 0.2s cubic-bezier(.06,.67,.37,.99);
+}
+[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2); 
+}
+[type=range]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  transition: all .2s ease;
+  box-shadow: 1px 1px 1px #4B0082;
+  background: #4B0082;
+  border: none;
+  border-radius: 5px; 
+}
+[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #4B0082;
+  border: 1px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #4B0082;
+  cursor: pointer;
+}
+[type=range]::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  transition: all .2s ease;
+  background: transparent;
+  border-color: transparent;
+  border-width: 8px 0;
+  color: transparent;
+}
+[type=range]::-ms-fill-lower {
+  box-shadow: 1px 1px 1px #4B0082;
+  background: #4B0082;
+  border: 1px solid #4B0082;
+  border-radius: 0;
+}
+[type=range]::-ms-fill-upper {
+  box-shadow: 1px 1px 1px #4B0082;
+  background: #4B0082;
+  border: 1px solid #4B0082;
+  border-radius: 0;
+}
+[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #4B0082;
+  border: 1px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #4B0082;
+  cursor: pointer;
+}
+[type=range]:focus::-ms-fill-lower {
+  background: #4B0082;
+}
+[type=range]:focus::-ms-fill-upper {
+  background: #4B0082;
 }
