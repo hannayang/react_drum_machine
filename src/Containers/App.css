@@ -275,6 +275,83 @@ input {
   }
 }
 
+@media(min-width: 1400px) {
+  .empty {
+    padding-top: 120px; 
+  }
+}
+
+@media(min-width: 1600px) {
+  #drum-container {
+    width: 850px; 
+    height: 550px; 
+    padding: 30px; 
+  }
+
+  #drum-control {
+    width: 50%; 
+  }
+  
+  #power-title {
+    width: 90px;
+    font-size: 30px; 
+  }
+  
+  .toggle-button {
+    width: 100px; 
+    height: 50px; 
+    border: 2px solid; 
+    border-radius: 6px; 
+    margin-top: 15px; 
+  }
+  
+  .item-left {
+    width: 50px; 
+    height: 50px; 
+  }
+  
+  .item-right {
+    width: 50px; 
+    height: 50px; 
+  }
+  
+  .display-box {
+    margin: 50px auto 50px auto; 
+    background-color: #4B0082; 
+    border-radius: 5px; 
+    width: 220px; 
+  }
+  
+  .display-text {
+    font-size: 22px;
+    height: 26px; 
+  }
+  
+  #bank-title {
+    font-size: 30px; 
+    width: 75px;
+    margin-top: 45px; 
+  }
+
+  #music-keys { 
+    margin-top: 90px;  
+  }
+  
+  .music-buttons {
+    width: 105px; 
+    height: 105px; 
+    margin: 15px; 
+    border-radius: 12px; 
+    font-size: 30px; 
+  }
+
+  @media(min-height: 1400px) {
+    .empty {
+      padding-top: 230px; 
+    }
+  }
+  
+}
 /*-------------- CUSTOM VOLUME RANGE INPUT -- Credit: https://github.com/darlanrod/input-range-scss/blob/master/_inputrange.scss ------*/
 [type=range] {
   -webkit-appearance: none;
