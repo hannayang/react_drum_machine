@@ -110,6 +110,7 @@ h3 {
 
 input {
   width: 210px; 
+  background-color: transparent; 
 }
 
 #bank-title {
