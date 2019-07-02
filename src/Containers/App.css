@@ -361,6 +361,7 @@ input {
   -webkit-appearance: none;
   margin: 12.5px 0;
   width: 100%;
+  background-color: transparent; 
 }
 [type=range]:focus {
   outline: none;
